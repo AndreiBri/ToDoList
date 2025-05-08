@@ -1,9 +1,9 @@
-📋 My To-Do List
+📋 <b>My To-Do List</b> :
 
 This is a simple web-based To-Do List app where you can add tasks, mark them as completed, restore them, and remove them.
 It also includes a Light/Dark mode toggle to switch between themes.
 
-🚀 Features
+🚀 <b>Features</b> :
 
 ✅ Add new tasks
 
@@ -17,7 +17,7 @@ It also includes a Light/Dark mode toggle to switch between themes.
 
 ✅ Tasks are saved in localStorage, so they stay after refreshing the page
 
-💻 Technologies Used
+💻 <b>Technologies Used</b> :
 
 HTML5
 
@@ -25,22 +25,24 @@ CSS3 (Flexbox)
 
 JavaScript (vanilla)
 
-🌙 Demo
-You can try it live here:
+🌙 <b>Demo</b> :
+
+<b>You can try it live here</b>:   
+
 👉 GitHub Pages Link → https://github.com/AndreiBri ←
 
-📦 Setup
-To run locally:
+📦 <b>Setup</b>:
 
-Clone the repository
+To run locally: Clone the repository
 
-git clone https://github.com/AndreiBri/ToDoList/tree/ea7b590a3aeea9c10ddeede694c00a62804ece46
+ → https://github.com/AndreiBri/ToDoList/tree/ea7b590a3aeea9c10ddeede694c00a62804ece46  ←
 
 Open index.html in your browser.
 
 No installation or server needed.
 
-✨ Future Improvements
+✨ <b>Future Improvements</b> :
+
 Add task deadlines or priority
 
 Add animations or transitions
@@ -51,6 +53,6 @@ Improve accessibility (keyboard navigation, screen reader support)
 
 Add a backend or database to store tasks permanently
 
-📄 License
+📄 <b>License</b> :
 
 This project is open source under the MIT License.
