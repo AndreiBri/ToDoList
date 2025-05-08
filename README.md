@@ -6,10 +6,15 @@ It also includes a Light/Dark mode toggle to switch between themes.
 🚀 Features
 
 ✅ Add new tasks
+
 ✅ Mark tasks as completed
+
 ✅ Restore completed tasks to the main list
+
 ✅ Remove tasks
+
 ✅ Light and Dark theme toggle
+
 ✅ Tasks are saved in localStorage, so they stay after refreshing the page
 
 💻 Technologies Used
