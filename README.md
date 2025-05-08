@@ -19,13 +19,13 @@ JavaScript (vanilla)
 
 🌙 Demo
 You can try it live here:
-👉 GitHub Pages Link ← (replace with your actual link)
+👉 GitHub Pages Link → https://github.com/AndreiBri ←
 
 📦 Setup
 To run locally:
 
 Clone the repository
-git clone https://github.com/yourusername/your-repo-name.git
+git clone https://github.com/AndreiBri/ToDoList/tree/ea7b590a3aeea9c10ddeede694c00a62804ece46
 Open index.html in your browser.
 
 No installation or server needed.
