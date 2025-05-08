@@ -33,7 +33,9 @@ You can try it live here:
 To run locally:
 
 Clone the repository
+
 git clone https://github.com/AndreiBri/ToDoList/tree/ea7b590a3aeea9c10ddeede694c00a62804ece46
+
 Open index.html in your browser.
 
 No installation or server needed.
