@@ -11,6 +11,7 @@ It also includes a Light/Dark mode toggle to switch between themes.
 ✅ Tasks are saved in localStorage, so they stay after refreshing the page
 
 💻 Technologies Used
+
 HTML5
 
 CSS3 (Flexbox)
@@ -42,4 +43,5 @@ Improve accessibility (keyboard navigation, screen reader support)
 Add a backend or database to store tasks permanently
 
 📄 License
+
 This project is open source under the MIT License.
