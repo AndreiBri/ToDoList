@@ -1,8 +1,10 @@
 📋 My To-Do List
+
 This is a simple web-based To-Do List app where you can add tasks, mark them as completed, restore them, and remove them.
 It also includes a Light/Dark mode toggle to switch between themes.
 
 🚀 Features
+
 ✅ Add new tasks
 ✅ Mark tasks as completed
 ✅ Restore completed tasks to the main list
