@@ -17,6 +17,8 @@ It also includes a Light/Dark mode toggle to switch between themes.
 
 ✅ Tasks are saved in localStorage, so they stay after refreshing the page
 
+✅ Add task deadlines or priority
+
 💻 <b>Technologies Used</b> :
 
 HTML5
@@ -42,8 +44,6 @@ Open index.html in your browser.
 No installation or server needed.
 
 ✨ <b>Future Improvements</b> :
-
-Add task deadlines or priority
 
 Add animations or transitions
 
