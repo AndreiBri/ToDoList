@@ -2,6 +2,11 @@ const todoInput = document.getElementById('todo-input');
 const addButton = document.getElementById('add-btn');
 const todoList = document.getElementById('todo-list');
 const completedList = document.getElementById('completed-list');
+const filterAllBtn = document.getElementById('filter-all');
+const filterTodoBtn = document.getElementById('filter-todo');
+const filterCompletedBtn = document.getElementById('filter-completed');
+const taskCounter = document.getElementById('task-counter');
+const prioritySelect = document.getElementById('priority-select'); // Select per la priorità
 
 // Carica le task dal localStorage all'avvio della pagina
 window.onload = function() {
@@ -11,8 +16,9 @@ window.onload = function() {
 // Aggiungi nuova task
 addButton.addEventListener('click', function() {
     const task = todoInput.value.trim();
+    const priority = prioritySelect.value; // Leggi la priorità selezionata
     if (task !== '') {
-        addTask(task, false);
+        addTask(task, false, priority); // Passa anche la priorità
         todoInput.value = '';
         saveTasks();
     }
@@ -25,13 +31,19 @@ todoInput.addEventListener('keypress', function(e) {
     }
 });
 
-function addTask(task, completed) {
+function addTask(task, completed, priority) {
     const li = document.createElement('li');
 
     // CREIAMO UN <span> PER IL TESTO
     const taskSpan = document.createElement('span');
     taskSpan.textContent = task;
     li.appendChild(taskSpan);
+
+    // Aggiungiamo la priorità visibile
+    const prioritySpan = document.createElement('span');
+    prioritySpan.textContent = `(${priority})`; // Mostra la priorità
+    prioritySpan.classList.add('priority');
+    li.appendChild(prioritySpan);
 
     // CREIAMO UN CONTENITORE PER I BOTTONI
     const buttonContainer = document.createElement('div');
@@ -43,6 +55,7 @@ function addTask(task, completed) {
     removeButton.onclick = function() {
         li.remove();
         saveTasks();
+        updateCounter();
     };
 
     if (completed) {
@@ -51,8 +64,9 @@ function addTask(task, completed) {
         restoreButton.classList.add('restore-btn');
         restoreButton.onclick = function() {
             li.remove();
-            addTask(task, false);
+            addTask(task, false, priority); // Ripristina la task con la priorità
             saveTasks();
+            updateCounter();
         };
         buttonContainer.appendChild(restoreButton);
     } else {
@@ -61,8 +75,9 @@ function addTask(task, completed) {
         completeButton.classList.add('complete-btn');
         completeButton.onclick = function() {
             li.remove();
-            addTask(task, true);
+            addTask(task, true, priority); // Aggiungi la task alla lista completate con la priorità
             saveTasks();
+            updateCounter();
         };
         buttonContainer.appendChild(completeButton);
     }
@@ -78,6 +93,10 @@ function addTask(task, completed) {
     } else {
         todoList.appendChild(li);
     }
+
+    // Ordina i task in base alla priorità
+    sortTasks();
+    updateCounter();
 }
 
 function saveTasks() {
@@ -88,12 +107,14 @@ function saveTasks() {
 
     todoList.querySelectorAll('li').forEach(li => {
         const taskText = li.querySelector('span').textContent.trim();
-        tasks.todo.push(taskText);
+        const priority = li.querySelector('.priority').textContent.trim().replace(/[()]/g, ''); // Rimuovi parentesi
+        tasks.todo.push({ taskText, priority });
     });
 
     completedList.querySelectorAll('li').forEach(li => {
         const taskText = li.querySelector('span').textContent.trim();
-        tasks.completed.push(taskText);
+        const priority = li.querySelector('.priority').textContent.trim().replace(/[()]/g, ''); // Rimuovi parentesi
+        tasks.completed.push({ taskText, priority });
     });
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -103,9 +124,39 @@ function loadTasks() {
     const saved = localStorage.getItem('tasks');
     if (saved) {
         const tasks = JSON.parse(saved);
-        tasks.todo.forEach(task => addTask(task, false));
-        tasks.completed.forEach(task => addTask(task, true));
+        tasks.todo.forEach(task => addTask(task.taskText, false, task.priority));
+        tasks.completed.forEach(task => addTask(task.taskText, true, task.priority));
     }
+}
+
+function sortTasks() {
+    // Ordina la lista in base alla priorità (low, medium, high)
+    const getPriorityValue = (priority) => {
+        switch(priority) {
+            case 'low': return 1;
+            case 'medium': return 2;
+            case 'high': return 3;
+            default: return 0;
+        }
+    };
+
+    // Funzione per ordinare la lista dei task
+    const sortList = (list) => {
+        const sortedItems = [...list].sort((a, b) => {
+            const priorityA = a.querySelector('.priority').textContent.trim().replace(/[()]/g, '');
+            const priorityB = b.querySelector('.priority').textContent.trim().replace(/[()]/g, '');
+            return getPriorityValue(priorityB) - getPriorityValue(priorityA);
+        });
+        return sortedItems;
+    };
+
+    // Riordina la lista delle task da fare
+    const sortedTodoItems = sortList(Array.from(todoList.children));
+    sortedTodoItems.forEach(item => todoList.appendChild(item));
+
+    // Riordina la lista delle task completate
+    const sortedCompletedItems = sortList(Array.from(completedList.children));
+    sortedCompletedItems.forEach(item => completedList.appendChild(item));
 }
 
 // DARK / LIGHT MODE
@@ -141,3 +192,32 @@ themeToggleButton.addEventListener('click', () => {
 
 // Imposta il tema iniziale
 setTheme();
+
+function updateCounter() {
+    const totalTasks = todoList.querySelectorAll('li').length + completedList.querySelectorAll('li').length;
+    const completedTasks = completedList.querySelectorAll('li').length;
+    const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+
+    taskCounter.textContent = `${completedTasks} su ${totalTasks} completati (${percentage}%)`;
+}
+
+// Filtro per mostrare tutte le task
+filterAllBtn.addEventListener('click', function() {
+    todoList.style.display = 'block';
+    completedList.style.display = 'block';
+    updateCounter();
+});
+
+// Filtro per mostrare solo le task da fare
+filterTodoBtn.addEventListener('click', function() {
+    todoList.style.display = 'block';
+    completedList.style.display = 'none';
+    updateCounter();
+});
+
+// Filtro per mostrare solo le task completate
+filterCompletedBtn.addEventListener('click', function() {
+    todoList.style.display = 'none';
+    completedList.style.display = 'block';
+    updateCounter();
+});
