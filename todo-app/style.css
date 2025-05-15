@@ -402,7 +402,8 @@ body.dark-mode #theme-toggle .fa-moon {
   color: #000000;                /* dark text */
 }
 .light-mode li {
-    background-color: #808080;  /* white */
+    border: 1px solid #333;  /* light gray */
+    background-color: #ffffff;  /* white */
     color: #000000;                /* dark text */
 }
 
