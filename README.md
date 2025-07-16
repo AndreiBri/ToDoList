@@ -7,19 +7,25 @@ It also includes a Light/Dark mode toggle to switch between themes.
 
 🚀 <b>Features</b> :
 
-✅ Add new tasks
+✅ Add new tasks  
 
-✅ Mark tasks as completed
+✏️ Edit existing tasks (task name, deadline, and priority)  
 
-✅ Restore completed tasks to the main list
+📅 Add and view task deadlines  
 
-✅ Remove tasks
+🔺 Set task priority (e.g., high, medium, low)  
 
-✅ Light and Dark theme toggle
+✅ Mark tasks as completed  
 
-✅ Tasks are saved in localStorage, so they stay after refreshing the page
+🔁 Restore completed tasks to the main list  
 
-✅ Add task deadlines or priority
+❌ Remove individual tasks  
+
+🧹 Cancel/Delete all completed tasks with a confirmation popup ("Are you sure?" → OK / Cancel)  
+
+🌗 Light and Dark theme toggle  
+
+💾 Tasks are saved in **localStorage**, so they stay after refreshing the page  
 
 💻 <b>Technologies Used</b> :
 
@@ -33,7 +39,9 @@ JavaScript (vanilla)
 
 <b>You can try it live here</b>:   
 
-👉 GitHub Pages Link → https://github.com/AndreiBri ←
+👉 GitHub Pages → https://andreibri.github.io/ToDoList/  
+
+👉 GitHub Repository → https://github.com/AndreiBri/ToDoList
 
 📦 <b>Setup</b>:
 
