@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <button id="theme-toggle" class="light-mode">
+            <i class="fas fa-sun"></i> <!-- Icona del sole per Light Mode -->
+            <i class="fas fa-moon"></i> <!-- Icona della luna per Dark Mode -->
+        </button><!-- Pulsante per cambiare tema -->
+        <h1>My To-Do List</h1>
+    </header>
+    
+    <main>
+        <div class="add-task-section">
+            <input type="text" id="todo-input" placeholder="Add a new task">
+
+                        <!-- Menu a discesa per selezionare la priorità -->
+            <select id="priority-select">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <button id="add-btn">Add Task</button>
+        </div>
+        <div class="filter-buttons">
+           <button id="filter-all">Tutti</button>
+           <button id="filter-todo">Da Fare</button>
+           <button id="filter-completed">Completati</button>
+        </div>
+
+        <div id="task-counter">
+    <!-- Qui mostreremo il contatore -->
+        </div>
+
+        <div class="todo-columns-container">
+            <div class="todo-columns">
+                <div class="todo-column">
+                    <h2>Tasks to Do</h2>
+                    <ul id="todo-list"></ul>
+                </div>
+                <div class="todo-column">
+                    <h2>Completed Tasks</h2>
+                    <ul id="completed-list"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2025 My To-Do App</span>
+            <span>| Made by AndreiBri</span>
+            <span>| <i class="fab fa-github"></i> <a href="https://github.com/AndreiBri" target="_blank">GitHub</a></span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
