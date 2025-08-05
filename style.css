@@ -77,6 +77,10 @@ button:hover {
     background-color: #4caf50;
 }
 
+button#clear-completed {
+  margin-top: 20px; /* Adjust the value as needed */
+}
+
 .todo-columns-container {
     display: flex;
     justify-content: space-between;
